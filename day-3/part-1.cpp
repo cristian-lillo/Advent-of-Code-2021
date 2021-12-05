@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 
+#define N_BITS 12
+
 using namespace std;
 
 int main() {
@@ -8,20 +10,21 @@ int main() {
     string gamma_rate_binary = "000000000000", epsilon_rate_binary = "000000000000";
     int gamma_rate, epsilon_rate, power_consumption;
 
+    ifstream input_file("input.txt");
     string binary_number;
-    vector<int> bits(12, 0);
+    vector<int> bits(N_BITS, 0);
 
-    while (cin >> binary_number) {
-        for (int i = 0; i < binary_number.length(); i++) {
+    while (input_file >> binary_number) {
+        for (int i = 0; i < N_BITS; i++) {
             binary_number[i] == '1' ? bits[i]++ : bits[i]--;
         }
     }
 
-    for (int i = 0; i < gamma_rate_binary.length(); i++) {
+    for (int i = 0; i < N_BITS; i++) {
         gamma_rate_binary[i] = (bits[i] > 0) ? '1' : '0';
     }
 
-    for (int i = 0; i < epsilon_rate_binary.length(); i++) {
+    for (int i = 0; i < N_BITS; i++) {
         epsilon_rate_binary[i] = (bits[i] > 0) ? '0' : '1';
     }
 

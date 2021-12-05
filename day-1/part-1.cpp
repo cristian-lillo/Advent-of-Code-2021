@@ -5,14 +5,14 @@ using namespace std;
 int main() {
     ios::sync_with_stdio(0); cin.tie(0);
 
-    int current_depth;
-    cin >> current_depth;
+    ifstream input_file("input.txt");
 
-    int next_depth, increased_counter = 0;
+    int current_depth, next_depth;
+    int increased_counter = 0;
 
-    while (cin >> next_depth) {
+    input_file >> current_depth;
+    while (input_file >> next_depth) {
         if (next_depth > current_depth) increased_counter++;
-
         current_depth = next_depth;
     }
 

@@ -7,9 +7,10 @@ int main() {
 
     int horizontal = 0, depth = 0;
 
+    ifstream input_file("input.txt");
     string instruction; int units;
 
-    while (cin >> instruction >> units) {
+    while (input_file >> instruction >> units) {
         if (instruction.compare("forward") == 0) horizontal += units;
         else if (instruction.compare("down") == 0) depth += units;
         else if (instruction.compare("up") == 0) depth -= units;

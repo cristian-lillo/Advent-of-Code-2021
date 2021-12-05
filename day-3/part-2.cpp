@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 
+#define N_BITS 12
+
 using namespace std;
 
 int main() {
@@ -9,11 +11,12 @@ int main() {
     string oxygen_binary, co2_binary;
     int oxygen_generator_rating, co2_scrubber_rating, life_support_rating;
 
+    ifstream input_file("input.txt");
     string binary_number;
-    vector<int> bits(12, 0);
+    vector<int> bits(N_BITS, 0);
 
-    while (cin >> binary_number) {
-        for (int i = 0; i < binary_number.length(); i++) {
+    while (input_file >> binary_number) {
+        for (int i = 0; i < N_BITS; i++) {
             binary_number[i] == '1' ? bits[i]++ : bits[i]--;
         }
 
@@ -24,7 +27,7 @@ int main() {
     while (oxygen_vector.size() > 1) {
         auto it_begin = oxygen_vector.begin();
 
-        for (int i = 0; i < bits.size(); i++) {
+        for (int i = 0; i < N_BITS; i++) {
             for (int j = 0; j < oxygen_vector.size(); j++) {
                 if (bits[i] >= 0 && oxygen_vector[j][i] == '0') oxygen_vector.erase(it_begin + j);
                 else if (bits[i] < 0 && oxygen_vector[j][i] == '1') oxygen_vector.erase(it_begin + j);
@@ -35,7 +38,7 @@ int main() {
     while (co2_vector.size() > 1) {
         auto it_begin = co2_vector.begin();
 
-        for (int i = 0; i < bits.size(); i++) {
+        for (int i = 0; i < N_BITS; i++) {
             for (int j = 0; j < oxygen_vector.size(); j++) {
                 if (bits[i] <= 0 && co2_vector[j][i] == '1') oxygen_vector.erase(it_begin + j);
                 else if (bits[i] > 0 && co2_vector[j][i] == '0') oxygen_vector.erase(it_begin + j);

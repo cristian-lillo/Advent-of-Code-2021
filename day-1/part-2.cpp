@@ -5,17 +5,18 @@ using namespace std;
 int main() {
     ios::sync_with_stdio(0); cin.tie(0);
 
+    ifstream input_file("input.txt");
+
     int first_depth, second_depth, third_depth;
-    cin >> first_depth >> second_depth >> third_depth;
+    input_file >> first_depth >> second_depth >> third_depth;
 
     int first_window = first_depth + second_depth + third_depth;
     
     int fourth_depth, second_window;
     int increased_counter = 0;
 
-    while (cin >> fourth_depth) {
+    while (input_file >> fourth_depth) {
         second_window = second_depth + third_depth + fourth_depth;
-
         if (second_window > first_window) increased_counter++;
 
         first_depth = second_depth;

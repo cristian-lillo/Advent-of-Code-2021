@@ -7,14 +7,14 @@ int main() {
 
     /* we save the ten unique signal patterns, a | delimiter, and finally the four digit output value in a string */
     ifstream input_file("input.txt");
-    string single_entry, four_digit_output;
+    string single_entry;
 
     /* we update the counter of digits with a unique number of segments */
     int counter = 0;
     while (getline(input_file, single_entry)) {
         /* we ignore the ten unique signal patterns and focus on the four digit output value */
         int delimiter_pos = single_entry.find('|');
-        four_digit_output = single_entry.substr(delimiter_pos+2);
+        string four_digit_output = single_entry.substr(delimiter_pos+2);
 
         /* we define start and end positions for each digit output */
         int start_pos = 0;

@@ -67,9 +67,42 @@ int main() {
         }
 
         /* if both points are on the same vertical position then we build a horizontal line */
-        if (y1 == y2) {
+        else if (y1 == y2) {
             if (x1 > x2) swap(x1, x2);
             for (int i = x1; i <= x2; i++) ocean_floor[y1][i]++;
+        }
+
+        /* if the points don't coincide on any coordinate then it's a diagonal line */
+        else {
+            if (x1 < x2) {
+                if (y1 < y2) {
+                    int i = x1;
+                    for (int j = y1; j <= y2; j++) {
+                        ocean_floor[j][i]++;
+                        i++;
+                    }
+                } else if (y1 > y2) {
+                    int i = x1;
+                    for (int j = y1; j >= y2; j--) {
+                        ocean_floor[j][i]++;
+                        i++;
+                    }
+                }
+            } else if (x1 > x2) {
+                if (y1 < y2) {
+                    int i = x1;
+                    for (int j = y1; j <= y2; j++) {
+                        ocean_floor[j][i]++;
+                        i--;
+                    }
+                } else if (y1 > y2) {
+                    int i = x1;
+                    for (int j = y1; j >= y2; j--) {
+                        ocean_floor[j][i]++;
+                        i--;
+                    }
+                }
+            }
         }
     }
 
